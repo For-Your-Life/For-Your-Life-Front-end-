@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
+import styles from './index.module.scss';
 const About = () => {
   const [counter, setCounter] = useState(0);
   return (
     <div className="container">
-      <h1>About {counter}</h1>
+      <h1 className={styles.about}>About {counter}</h1>
       <button type="button" onClick={() => setCounter(prev => prev + 1)}>
         +
       </button>
