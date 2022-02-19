@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useUser from '../../swr/useUsers';
 import styles from './index.module.scss';
 const About = () => {
-  const [counter, setCounter] = useState(0);
+  const { user, isLoading } = useUser();
   return (
-    <div className="container">
-      <h1 className={styles.about}>About {counter}</h1>
-      <button type="button" onClick={() => setCounter(prev => prev + 1)}>
-        +
-      </button>
-      <button type="button" onClick={() => setCounter(prev => prev - 1)}>
-        -
-      </button>
-      <button type="button" onClick={() => setCounter(0)}>
-        Reset
-      </button>
-      <style jsx>
-        {`
-          .container {
-          }
-        `}
-      </style>
-    </div>
+    <>
+      {isLoading
+        ? `loading`
+        : user.map((article, index) => {
+            return (
+              <div key={index}>
+                <div className={styles.res}>
+                  <p>id: {article.id}</p>
+                  <p>name: {article.name}</p>
+                  <p>gender: {article.gender}</p>
+                </div>
+              </div>
+            );
+          })}
+    </>
   );
 };
 

@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "첫 번째 post",
+      "content": "post 내용"
+    },
+    {
+      "id": 2,
+      "title": "두 번째 post",
+      "content": "post 내용"
+    },
+    {
+      "id": 3,
+      "title": "세 번째 post",
+      "content": "post 내용"
+    }
+  ],
+  "users": [
+    {
+      "email": "moa@naver.com",
+      "password": "aaaaaaa",
+      "name": "박건웅",
+      "nickname": "moa",
+      "id": 1
+    },
+    {
+      "email": "earlyBird@naver.com",
+      "password": "aaaaaaa",
+      "name": "정재욱",
+      "nickname": "earlyBird",
+      "id": 2
+    },
+    {
+      "email": "test@test.com",
+      "password": "123456789",
+      "name": "노무현",
+      "nickname": "노묵훈",
+      "id": 3
+    }
+  ],
+  "login": [
+    {
+      "token": "testtoken123456789",
+      "nickname": "Cottonwood"
+    }
+  ]
+}

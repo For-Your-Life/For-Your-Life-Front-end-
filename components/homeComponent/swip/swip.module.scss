@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrap {
+  display: flex;
+}
+.swip {
+  width: 100%;
+}
+.test {
+  position: relative;
+  height: 20rem;
+  .article {
+    position: absolute;
+    width: 20rem;
+    height: 100%;
+    background-color: royalblue;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 2px solid #333;
+    border-radius: 20px;
+  }
+}

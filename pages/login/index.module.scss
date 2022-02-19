@@ -1,0 +1,85 @@
+@import '../../styles/color.scss';
+@import '../../styles/size.scss';
+@import '../../styles/animation.scss';
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: $basicTheme;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .img {
+    width: 35rem;
+    height: 35rem;
+    background: url('https://media1.giphy.com/media/jrioySVFJDFythtJtZ/giphy.gif?cid=ecf05e47tekhitugo46iwf3chvey6nhvtx07o2fvjwizxj6y&rid=giphy.gif&ct=s'),
+      no-repeat center center;
+    background-size: 100% 100%;
+  }
+  .login {
+    width: 30rem;
+    height: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 8px 8px 2px 0px #999;
+    padding: 2rem;
+    transition: 0.2s;
+    .title {
+      font-size: 36px;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    input {
+      height: 5rem;
+      outline: none;
+      border: none;
+      margin-top: 2rem;
+      background-color: white;
+      border-bottom: 1px solid $basicText;
+      font-size: 1.5rem;
+      color: $basicText;
+      transition: 0.4s;
+      padding: 1rem;
+      &:focus {
+        background-color: rgb(244, 255, 231);
+      }
+    }
+  }
+  .loginBtn {
+    margin: 2rem;
+  }
+  .socialLogin {
+    font-size: 24px;
+    color: #888;
+    text-align: center;
+  }
+  .social {
+    display: flex;
+    justify-content: center;
+    .socialArticle {
+      width: 3rem;
+      height: 3rem;
+      background-color: $basicTheme;
+      border-radius: 50%;
+      margin: 2rem;
+    }
+  }
+  .find {
+    display: flex;
+    justify-content: center;
+    color: #888;
+    .findElement {
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .bar {
+      border-right: 1px solid #888;
+      margin: 0 1rem 0 1rem;
+    }
+  }
+  @media screen and (max-width: $breakpoint-tablet) {
+    .img {
+      display: none;
+    }
+  }
+}
