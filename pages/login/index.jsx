@@ -49,15 +49,15 @@ const Index = () => {
               text={`로그인`}
               size={`24px`}
               width={`100%`}
-              backgroundColor={`rgb(182, 253, 182)`}
+              backgroundColor={`#70d0dd`}
               fontColor={`white`}
               onClick={onLogin}
             />
           </div>
           <span className={styles.socialLogin}>간편 로그인</span>
           <div className={styles.social}>
-            <div className={styles.socialArticle}></div>
-            <div className={styles.socialArticle}></div>
+            <div className={styles.kakao}></div>
+            <div className={styles.google}></div>
           </div>
           <div className={styles.find}>
             <div className={styles.findElement}>아이디/비밀번호 찾기</div>

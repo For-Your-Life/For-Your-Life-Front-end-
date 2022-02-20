@@ -41,7 +41,7 @@
       transition: 0.4s;
       padding: 1rem;
       &:focus {
-        background-color: rgb(244, 255, 231);
+        background-color: #d7f7fb;
       }
     }
   }
@@ -56,12 +56,25 @@
   .social {
     display: flex;
     justify-content: center;
-    .socialArticle {
+    .kakao {
       width: 3rem;
       height: 3rem;
       background-color: $basicTheme;
       border-radius: 50%;
       margin: 2rem;
+      background: url('https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd=s180-rw')
+        no-repeat center center;
+      background-size: 100% 100%;
+    }
+    .google {
+      width: 3rem;
+      height: 3rem;
+      background-color: $basicTheme;
+      border-radius: 50%;
+      margin: 2rem;
+      background: url('https://play-lh.googleusercontent.com/aFWiT2lTa9CYBpyPjfgfNHd0r5puwKRGj2rHpdPTNrz2N9LXgN_MbLjePd1OTc0E8Rl1=s180-rw')
+        no-repeat center center;
+      background-size: 100% 100%;
     }
   }
   .find {

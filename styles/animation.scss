@@ -1,9 +1,24 @@
-@keyframes scale {
+@keyframes scaleDown {
   0% {
     transform: scale(1);
   }
   100% {
     transform: scale(0);
-    display: none;
+  }
+}
+@keyframes scaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

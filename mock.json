@@ -1,27 +1,47 @@
 {
-  "posts": [
+  "announcement": [
     {
       "id": 1,
-      "title": "첫 번째 post",
+      "title": "첫 번째 pooooooooooooooooooooooooooost",
       "content": "post 내용"
     },
     {
       "id": 2,
-      "title": "두 번째 post",
-      "content": "post 내용"
+      "title": "두 번째 pooooooooooooooooooooooooooost",
+      "content": "pooooooooooooooooooooooooooost 내용"
     },
     {
       "id": 3,
-      "title": "세 번째 post",
-      "content": "post 내용"
+      "title": "세 번째 pooooooooooooooooooooooooooost",
+      "content": "pooooooooooooooooooooooooooost 내용"
+    },
+    {
+      "id": 4,
+      "title": "네 번째 pooooooooooooooooooooooooooost",
+      "content": "pooooooooooooooooooooooooooost 내용"
+    },
+    {
+      "id": 5,
+      "title": "다섯 번째 pooooooooooooooooooooooooooost",
+      "content": "pooooooooooooooooooooooooooost 내용"
+    },
+    {
+      "id": 6,
+      "title": "여섯 번째 pooooooooooooooooooooooooooost",
+      "content": "pooooooooooooooooooooooooooost 내용"
+    },
+    {
+      "id": 7,
+      "title": "일곱 번째 pooooooooooooooooooooooooooost",
+      "content": "pooooooooooooooooooooooooooost 내용"
     }
   ],
   "users": [
     {
-      "email": "moa@naver.com",
+      "email": "cottonwood@naver.com",
       "password": "aaaaaaa",
-      "name": "박건웅",
-      "nickname": "moa",
+      "name": "박건",
+      "nickname": "cottonwood",
       "id": 1
     },
     {
@@ -37,6 +57,13 @@
       "name": "노무현",
       "nickname": "노묵훈",
       "id": 3
+    },
+    {
+      "email": "last@naver.com",
+      "password": "123",
+      "name": "마지막",
+      "nickname": "마지막",
+      "id": 4
     }
   ],
   "login": [

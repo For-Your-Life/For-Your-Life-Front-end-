@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import styles from './navBar.module.scss';
 // hooks
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import useWindowDimensions from '../../swr/useGetWindow';
 // icon
 import { FaRegArrowAltCircleRight, FaUserEdit } from 'react-icons/fa';
 // nookie
 import { parseCookies, destroyCookie } from 'nookies';
+
 export default function NavBar() {
   // token 체크해서 로그인/로그아웃 조건부 렌더링
   const [checkToken, setCheckToken] = useState(parseCookies().TOKEN);
@@ -15,6 +16,9 @@ export default function NavBar() {
   const windowDimension = useWindowDimensions();
   // router
   const router = useRouter();
+  useEffect(() => {
+    setCheckToken(parseCookies().TOKEN);
+  }, [parseCookies().TOKEN]);
   return (
     <>
       <nav className={styles.nav}>
@@ -39,6 +43,7 @@ export default function NavBar() {
               onClick={() => {
                 destroyCookie(null, 'TOKEN');
                 setCheckToken(false);
+                router.push('/');
               }}
             >
               <FaRegArrowAltCircleRight className={styles.icon} />

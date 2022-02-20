@@ -18,6 +18,9 @@ const Swip = () => {
     if (window.width < 1000) {
       setSlidesToShow(2);
     }
+    if (window.width < 800) {
+      setSlidesToShow(1);
+    }
   }, [window.width]);
   // 슬라이드 세팅
   // https://react-slick.neostack.com/docs/example
@@ -27,8 +30,8 @@ const Swip = () => {
     slidesToScroll: 1,
     autoplay: true,
     speed: 1000,
-    autoplaySpeed: 1500,
-    cssEase: 'linear',
+    autoplaySpeed: 1800,
+    cssEase: 'cubic-bezier(0.85, 0, 0.15, 1)',
   };
   // SWR get data 로직 필요
   // =====

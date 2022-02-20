@@ -1,0 +1,17 @@
+@import '../../styles/color.scss';
+@import '../../styles/animation.scss';
+.spinner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 5em;
+  height: 5em;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 10px solid #333;
+  border-top: 10px solid $basicTheme;
+  animation: spinner 1s infinite linear;
+}

@@ -3,6 +3,10 @@ import nookies from 'nookies';
 export default async function userModify(user) {
   // 요청헤더
   const accessToken = nookies.get();
+  if (!accessToken.TOKEN) {
+    alert('로그인 해주세요');
+    return;
+  }
   const headers = { Authorization: `Bearer ${accessToken.TOKEN}` };
   try {
     await axios({
