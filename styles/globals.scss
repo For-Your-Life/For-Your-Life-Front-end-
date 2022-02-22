@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+@import './color.scss';
 html,
 body,
 div,
@@ -167,4 +167,43 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $darkenTheme;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $darkenTheme;
+}
+
+.editor {
+  border: 2px solid $basicTheme;
+  margin-top: 2rem;
+  width: 100%;
+  min-height: 100vh;
+}
+.toolbar-class {
+  position: fixed;
+  z-index: 10;
+  margin-top: 100px;
+  right: 0;
+  width: 100%;
+  top: 0;
+  outline: 2px solid $basicTheme;
+}
+.wrapper-class {
+  width: 100%;
 }

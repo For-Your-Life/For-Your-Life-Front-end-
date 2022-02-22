@@ -1,8 +1,68 @@
+@import '../../styles/color.scss';
 .container {
   width: 100%;
-  height: 100vh;
-  background-color: orange;
+  background-color: white;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  .route {
+    width: 100%;
+    height: 6rem;
+    transform: translateY(100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    color: white;
+    background-color: $basicTheme;
+  }
+  .userInfo {
+    width: 80rem;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 12rem auto;
+    .userWrap {
+      width: 50%;
+    }
+    .title {
+      width: 100%;
+      font-size: 24px;
+      border-bottom: 4px solid $basicTheme;
+      margin-bottom: 2rem;
+      display: flex;
+    }
+    input {
+      width: 30rem;
+      height: 3rem;
+      outline: none;
+      border: none;
+      border: 1px solid #999;
+      font-size: 18px;
+      padding: 10px;
+      color: $basicText;
+      margin: 1rem;
+      border: none;
+      border-bottom: 4px solid $basicTheme;
+    }
+    input:disabled {
+      background: rgb(209, 209, 209);
+    }
+    span {
+      display: inline-block;
+      width: 3rem;
+    }
+    .icon {
+      font-size: 2rem;
+      transform: translateY(10px);
+      cursor: pointer;
+    }
+  }
+  .btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

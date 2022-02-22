@@ -1,0 +1,40 @@
+@import '../../../styles/color.scss';
+.container {
+  width: 50%;
+  height: 40rem;
+  padding: 2rem;
+  overflow-y: scroll;
+  border: 2px solid $brightTheme;
+  margin-left: 2rem;
+  .title {
+    font-size: 24px;
+    text-align: center;
+    display: flex;
+    .icon {
+      color: $basicTheme;
+    }
+  }
+  .addressWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .address {
+      width: 100%;
+      color: white;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 18px;
+      margin: 1rem;
+      color: $basicText;
+      border: 2px solid $basicTheme;
+      border-radius: 20px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
+}

@@ -47,7 +47,7 @@ const Index = () => {
           <div className={styles.loginBtn}>
             <Button
               text={`로그인`}
-              size={`24px`}
+              size={`18px`}
               width={`100%`}
               backgroundColor={`#70d0dd`}
               fontColor={`white`}

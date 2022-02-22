@@ -37,12 +37,13 @@ const SignUp = () => {
     } else {
       setSpinner(true);
       await signUp(user);
+      // 서버데이터의 users에 해당하는 데이터만 다시 받아오겠다.
       mutate(`${API_URL}/users`);
       setSpinner(false);
       router.push(`/login`);
     }
   };
-
+  // 비밀번호 유효성검사 및 컨펌
   useEffect(() => {
     const exptext = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     if (exptext.test(user.password) === true) {
@@ -57,7 +58,7 @@ const SignUp = () => {
       }
     } else {
       passwordConfirmRef.current.innerText =
-        '8자 이상 문자열, 하나이상 숫자, 문자, 특수문자를 포함하는 비밀번호를 입력해주세요.';
+        '비밀번호는 숫자, 문자의 조합으로 8자 이상이여야 합니다.';
       passwordConfirmRef.current.style.color = 'red';
     }
   }, [user.password, forPasswordConfirm]);
@@ -93,6 +94,9 @@ const SignUp = () => {
         setIsEmail(true);
       }
     }
+  };
+  const cancel = () => {
+    router.push('/');
   };
   return (
     <>

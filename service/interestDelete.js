@@ -1,14 +1,15 @@
 import axios from 'axios';
 import nookies from 'nookies';
-export default async function userModify(user) {
-  // 요청헤더
+
+export default async function interestDelete(id) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const accessToken = nookies.get();
   const headers = { Authorization: `Bearer ${accessToken.TOKEN}` };
+
   try {
     await axios({
-      method: 'put', //you can set what request you want to be
-      url: 'http://localhost:4000/users/1',
-      data: user,
+      method: 'delete',
+      url: `${API_URL}/interest/${id}`,
       headers,
     });
   } catch (err) {

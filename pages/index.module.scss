@@ -13,12 +13,13 @@
     flex-direction: column;
     align-items: center;
     background-color: $basicTheme;
+    margin-bottom: 8rem;
     .title {
       color: white;
       font-size: 36px;
       font-weight: bold;
       text-shadow: 2px 2px 2px #999;
-      margin-top: 14rem;
+      margin-top: 18rem;
     }
     .search {
       width: 30rem;

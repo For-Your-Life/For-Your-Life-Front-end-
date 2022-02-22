@@ -17,6 +17,7 @@ export default function NavBar() {
   // router
   const router = useRouter();
   useEffect(() => {
+    console.log('이거이거', parseCookies().TOKEN);
     setCheckToken(parseCookies().TOKEN);
   }, [parseCookies().TOKEN]);
   return (
@@ -80,7 +81,7 @@ export default function NavBar() {
             </Link>
           </div>
           <div className={styles.link}>
-            <Link href="/">
+            <Link href="/inquiry">
               <a>커뮤니티</a>
             </Link>
           </div>
