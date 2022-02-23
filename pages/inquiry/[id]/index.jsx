@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Button from '../../../components/button/button';
 import axios from 'axios';
 import { parseCookies } from 'nookies';
+import Spinner from '../../../components/spinner/spinner';
 const Id = ({ id }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
@@ -14,17 +15,29 @@ const Id = ({ id }) => {
   const { data, isLoading, mutate } = usePost(id);
   const update = async content => {
     await axios({
-      method: 'put', //you can set what request you want to be
+      method: 'put',
       url: `${API_URL}/inquiry/${id}`,
       data: { ...data, content: content },
     });
     await mutate();
     setEditorMode(false);
   };
+  const deletePost = async () => {
+    const deleteCheck = confirm('공지사항을 삭제하시겠습니까?');
+    if (!deleteCheck) {
+      return;
+    }
+    await axios({
+      method: 'delete',
+      url: `${API_URL}/inquiry/${id}`,
+    });
+    await mutate();
+    router.push('/inquiry');
+  };
   return (
     <div className={styles.container}>
       {isLoading ? (
-        <div>로딩중</div>
+        <Spinner />
       ) : (
         <div>
           <div className={styles.wrap}>
@@ -50,12 +63,17 @@ const Id = ({ id }) => {
               {console.log(parseCookies().email === data.title)}
               {editorMode ||
                 (parseCookies().email === data.email && (
-                  <div
-                    className={styles.edit}
-                    onClick={() => setEditorMode(true)}
-                  >
-                    수정하기
-                  </div>
+                  <>
+                    <div
+                      className={styles.edit}
+                      onClick={() => setEditorMode(true)}
+                    >
+                      수정
+                    </div>
+                    <div className={styles.edit} onClick={() => deletePost()}>
+                      삭제
+                    </div>
+                  </>
                 ))}
             </div>
             <div className={styles.content}>

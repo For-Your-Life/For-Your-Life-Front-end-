@@ -9,6 +9,7 @@ import Button from '../../components/button/button';
 import Interest from '../../components/myPageComponents/interest/interest';
 import Qna from '../../components/myPageComponents/qna/qna';
 import axios from 'axios';
+import Spinner from '../../components/spinner/spinner';
 const Index = () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
@@ -74,7 +75,7 @@ const Index = () => {
     <>
       <div className={styles.container}>
         {isLoading ? (
-          <div>로딩</div>
+          <Spinner />
         ) : (
           <>
             <div className={styles.route}>My Page</div>

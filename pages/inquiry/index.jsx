@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Button from '../../components/button/button';
 import { parseCookies } from 'nookies';
 import { useRouter } from 'next/router';
+import Spinner from '../../components/spinner/spinner';
 const Index = () => {
   const router = useRouter();
   const { data, mutate, isLoading } = useInquiry();
@@ -13,7 +14,7 @@ const Index = () => {
     <>
       <div className={styles.container}>
         {isLoading ? (
-          <div>로딩중</div>
+          <Spinner />
         ) : (
           <div className={styles.wrap}>
             <div className={styles.title}>

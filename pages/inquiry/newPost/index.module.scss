@@ -17,8 +17,8 @@
       font-size: 36px;
       color: $basicText;
       border: none;
+      border-bottom: 2px solid $basicTheme;
       outline: none;
-      margin-bottom: 2rem;
     }
     .header {
       display: flex;

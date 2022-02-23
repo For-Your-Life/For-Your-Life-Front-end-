@@ -2,6 +2,7 @@ import styles from './interest.module.scss';
 import useInterest from '../../../swr/useInterest';
 import { FaThumbsUp, FaRegTimesCircle } from 'react-icons/fa';
 import interestDelete from '../../../service/interestDelete';
+import Spinner from '../../spinner/spinner';
 const Interest = () => {
   const { data, isLoading, mutate } = useInterest();
   const deleteInterest = id => {
@@ -11,7 +12,7 @@ const Interest = () => {
   return (
     <>
       {isLoading ? (
-        <div>로딩중</div>
+        <Spinner />
       ) : (
         <div className={styles.container}>
           <div className={styles.title}>

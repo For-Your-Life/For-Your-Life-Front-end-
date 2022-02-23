@@ -35,12 +35,6 @@ const Id = () => {
             onChange={e => setData({ ...data, title: e.currentTarget.value })}
           />
 
-          <div className={styles.header}>
-            <div className={styles.writer}>
-              <FaUserCircle className={styles.icon} />
-              {data.writer}
-            </div>
-          </div>
           <div className={styles.content}>
             <TextEditor newPost={newPost} />
           </div>

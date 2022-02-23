@@ -1,0 +1,15 @@
+@import '../../styles/animation.scss';
+@import '../../styles/color.scss';
+.up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  font-size: 64px;
+  color: $darkenTheme;
+  cursor: pointer;
+  z-index: 5;
+  animation: scaleUp 0.2s cubic-bezier(0.85, 0, 0.15, 1);
+}
