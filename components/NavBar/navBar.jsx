@@ -17,7 +17,6 @@ export default function NavBar() {
   // router
   const router = useRouter();
   useEffect(() => {
-    console.log('이거이거', parseCookies().TOKEN);
     setCheckToken(parseCookies().TOKEN);
   }, [parseCookies().TOKEN]);
   return (
@@ -43,6 +42,10 @@ export default function NavBar() {
               className={styles.login}
               onClick={() => {
                 destroyCookie(null, 'TOKEN');
+                destroyCookie(null, 'name');
+                destroyCookie(null, 'email');
+                destroyCookie(null, 'nickname');
+                destroyCookie(null, 'id');
                 setCheckToken(false);
                 router.push('/');
               }}

@@ -4,7 +4,7 @@
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: $basicTheme;
+  background-color: $brightTheme;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,8 +40,15 @@
       color: $basicText;
       transition: 0.4s;
       padding: 1rem;
+      &::placeholder {
+        transition: 0.2s;
+      }
       &:focus {
-        background-color: #d7f7fb;
+        color: $basicTheme;
+        border-bottom: 1px solid $basicTheme;
+        &::placeholder {
+          color: $basicTheme;
+        }
       }
     }
   }

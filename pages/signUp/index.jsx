@@ -85,7 +85,6 @@ const SignUp = () => {
       // });
       const overlap = true;
       if (!overlap) {
-        console.log('이거이거', emailCheckRef.current.innerText);
         emailCheckRef.current.innerText = '이미 있는 이메일입니다.';
         emailCheckRef.current.style.color = 'red';
       } else {
@@ -170,7 +169,7 @@ const SignUp = () => {
             </div>
             <input
               type="text"
-              maxLength="8"
+              maxLength="20"
               onChange={e =>
                 setUser({ ...user, nickname: e.currentTarget.value })
               }
@@ -182,8 +181,8 @@ const SignUp = () => {
         <div className={styles.submit}>
           <Button
             text={`취소`}
-            size={`24px`}
-            width={`200px`}
+            size={`18px`}
+            width={`100px`}
             margin={`2rem`}
             backgroundColor={`#70d0dd`}
             fontColor={`white`}
@@ -191,8 +190,8 @@ const SignUp = () => {
           />
           <Button
             text={`확인`}
-            size={`24px`}
-            width={`200px`}
+            size={`18px`}
+            width={`100px`}
             margin={`2rem`}
             backgroundColor={`#70d0dd`}
             fontColor={`white`}

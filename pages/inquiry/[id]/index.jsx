@@ -1,19 +1,24 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
-import usePost from '../../../swr/usePost';
-import TextEditor from '../../../components/textEditor/textEditor';
 import { FaUserCircle } from 'react-icons/fa';
-import { useState } from 'react';
-import Button from '../../../components/button/button';
-import axios from 'axios';
 import { parseCookies } from 'nookies';
+import axios from 'axios';
+import usePost from '../../../swr/usePost';
 import Spinner from '../../../components/spinner/spinner';
+import Button from '../../../components/button/button';
+import TextEditor from '../../../components/textEditor/textEditor';
 const Id = ({ id }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const [editorMode, setEditorMode] = useState(false);
   const { data, isLoading, mutate } = usePost(id);
+  // 수정
   const update = async content => {
+    const check = confirm('발행하시겠습니까?');
+    if (!check) {
+      return;
+    }
     await axios({
       method: 'put',
       url: `${API_URL}/inquiry/${id}`,
@@ -21,7 +26,9 @@ const Id = ({ id }) => {
     });
     await mutate();
     setEditorMode(false);
+    router.push('/inquiry');
   };
+  // 삭제
   const deletePost = async () => {
     const deleteCheck = confirm('공지사항을 삭제하시겠습니까?');
     if (!deleteCheck) {
@@ -34,6 +41,7 @@ const Id = ({ id }) => {
     await mutate();
     router.push('/inquiry');
   };
+  // DOM
   return (
     <div className={styles.container}>
       {isLoading ? (
@@ -60,7 +68,6 @@ const Id = ({ id }) => {
                 {data.writer}
               </div>
               <div className={styles.date}>{data.date}</div>
-              {console.log(parseCookies().email === data.title)}
               {editorMode ||
                 (parseCookies().email === data.email && (
                   <>
@@ -104,7 +111,6 @@ const Id = ({ id }) => {
 };
 
 export default Id;
-// next.js의 router는
 export async function getServerSideProps({ query: { id } }) {
   return {
     props: {

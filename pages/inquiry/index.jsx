@@ -9,7 +9,6 @@ import Spinner from '../../components/spinner/spinner';
 const Index = () => {
   const router = useRouter();
   const { data, mutate, isLoading } = useInquiry();
-  console.log(data);
   return (
     <>
       <div className={styles.container}>

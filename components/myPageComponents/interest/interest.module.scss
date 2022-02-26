@@ -7,7 +7,7 @@
   border: 2px solid $brightTheme;
   margin-left: 2rem;
   .title {
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
     display: flex;
     .icon {
@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     .icon {
-      font-size: 24px;
+      font-size: 20px;
       cursor: pointer;
     }
     .address {
@@ -28,7 +28,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-size: 18px;
+      font-size: 14px;
       margin: 1rem;
       color: $basicText;
       border: 2px solid $basicTheme;

@@ -88,7 +88,7 @@ const Index = () => {
                   회원정보
                 </div>
 
-                <div>
+                <div className={styles.inputWrap}>
                   <span>이름:</span>
                   <input
                     type="text"
@@ -101,7 +101,7 @@ const Index = () => {
                   />
                 </div>
 
-                <div>
+                <div className={styles.inputWrap}>
                   <span>닉네임:</span>
                   <input
                     type="nickname"
@@ -116,7 +116,7 @@ const Index = () => {
                     disabled
                   />
                 </div>
-                <div>
+                <div className={styles.inputWrap}>
                   <span>이메일:</span>
                   <input
                     type="text"

@@ -14,7 +14,7 @@
     background-color: white;
     .editTitle {
       width: 100%;
-      font-size: 36px;
+      font-size: 30px;
       color: $basicText;
       border: none;
       border-bottom: 2px solid $basicTheme;
@@ -22,7 +22,7 @@
     }
     .header {
       display: flex;
-      font-size: 18px;
+      font-size: 16px;
       padding-bottom: 2rem;
       border-bottom: 2px solid $basicTheme;
       color: #999;
@@ -38,7 +38,7 @@
     .content {
       padding: 2rem;
       height: 100%;
-      font-size: 24px;
+      font-size: 22px;
       p {
         margin: 1rem;
       }
