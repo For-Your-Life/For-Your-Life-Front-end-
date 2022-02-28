@@ -32,6 +32,7 @@ const Swip = () => {
     speed: 1000,
     autoplaySpeed: 1800,
     cssEase: 'cubic-bezier(0.85, 0, 0.15, 1)',
+    arrows: false,
   };
   // SWR get data 로직 필요
   // =====

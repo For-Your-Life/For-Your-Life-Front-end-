@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import usePost from '../../../swr/usePost';
 import styles from './news.module.scss';
 const News = () => {
+  // eslint-disable-next-line no-unused-vars
   const { data, isLoading } = usePost(1);
   return (
     <>

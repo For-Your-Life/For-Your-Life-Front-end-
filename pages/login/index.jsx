@@ -25,6 +25,7 @@ const Index = () => {
     if (parseCookies().TOKEN) {
       router.push('/');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   return (
     <>

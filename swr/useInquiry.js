@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import axios from 'axios';
+// eslint-disable-next-line no-unused-vars
 export default function useInquiry(page) {
   // 나중에 page 파라미터를 추가로 요청하자.
   // 요청에 사용할 axios를 미리 fetcher에 등록해준다.

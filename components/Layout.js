@@ -86,6 +86,7 @@ export default function Layout({ children }) {
           @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
           body {
             font-family: 'Noto Sans KR', sans-serif;
+            padding-right: 0 !important;
             color: #555;
           }
           input {

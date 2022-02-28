@@ -1,8 +1,11 @@
 import styles from './mapContent.module.scss';
-const MapContent = ({ data }) => {
+import ItemSlider from './itemSlider/itemSlider';
+const MapContent = () => {
   return (
     <>
-      <div className={styles.mapContent}></div>
+      <div className={styles.mapContent}>
+        <ItemSlider />
+      </div>
     </>
   );
 };

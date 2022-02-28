@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styles from './mapNav.module.scss';
 import Roadview from './roadview/roadview';
 import MapHeader from './mapHeader/mapHeader';

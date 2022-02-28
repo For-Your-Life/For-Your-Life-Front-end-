@@ -18,6 +18,7 @@ export default function NavBar() {
   const router = useRouter();
   useEffect(() => {
     setCheckToken(parseCookies().TOKEN);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parseCookies().TOKEN]);
   return (
     <>

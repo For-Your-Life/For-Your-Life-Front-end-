@@ -4,7 +4,7 @@ import { FaSearch, FaMapMarkerAlt, FaTimesCircle } from 'react-icons/fa';
 import News from '../components/homeComponent/news/news';
 import Swip from '../components/homeComponent/swip/swip';
 import { useRouter } from 'next/router';
-import { destroyCookie, parseCookies } from 'nookies';
+import { parseCookies } from 'nookies';
 import { useEffect, useRef, useState } from 'react';
 import getAddress from '../service/getAddress';
 const Index = () => {

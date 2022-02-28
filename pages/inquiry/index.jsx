@@ -2,12 +2,12 @@ import useInquiry from '../../swr/useInquiry';
 import styles from './index.module.scss';
 import { FaBell } from 'react-icons/fa';
 import Link from 'next/link';
-import Button from '../../components/button/button';
 import { parseCookies } from 'nookies';
 import { useRouter } from 'next/router';
 import Spinner from '../../components/spinner/spinner';
 const Index = () => {
   const router = useRouter();
+  // eslint-disable-next-line no-unused-vars
   const { data, mutate, isLoading } = useInquiry();
   return (
     <>

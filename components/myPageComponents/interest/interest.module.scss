@@ -1,15 +1,12 @@
 @import '../../../styles/color.scss';
 .container {
-  width: 50%;
-  height: 40rem;
-  padding: 2rem;
-  overflow-y: scroll;
-  border: 2px solid $brightTheme;
-  margin-left: 2rem;
+  padding: 2rem 0;
   .title {
     font-size: 20px;
     text-align: center;
     display: flex;
+    border-bottom: 2px solid $basicTheme;
+    padding-bottom: 20px;
     .icon {
       color: $basicTheme;
     }
@@ -31,8 +28,8 @@
       font-size: 14px;
       margin: 1rem;
       color: $basicText;
-      border: 2px solid $basicTheme;
-      border-radius: 20px;
+      border: 1px solid #999;
+      border-radius: 10px;
       padding: 10px;
       cursor: pointer;
     }

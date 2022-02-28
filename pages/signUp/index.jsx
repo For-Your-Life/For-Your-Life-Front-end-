@@ -5,7 +5,8 @@ import { useSWRConfig } from 'swr';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Spinner from '../../components/spinner/spinner';
-import axios from 'axios';
+// import axios from 'axios';
+import Swal from 'sweetalert2';
 const SignUp = () => {
   const API_URL = process.env.API_URL;
   const router = useRouter();
@@ -27,13 +28,33 @@ const SignUp = () => {
   // 회원가입 완료 버튼
   const signUpNext = async () => {
     if (!isEmail) {
-      alert('이메일을 확인해주세요.');
+      Swal.fire({
+        icon: 'error',
+        title: '이메일을 확인해주세요.',
+        showConfirmButton: false,
+        timer: 1000,
+      });
     } else if (!isPassword) {
-      alert('비밀번호를 확인해주세요.');
+      Swal.fire({
+        icon: 'error',
+        title: '비밀번호를 확인해주세요.',
+        showConfirmButton: false,
+        timer: 1000,
+      });
     } else if (!user.name) {
-      alert('성함을 확인해주세요.');
+      Swal.fire({
+        icon: 'error',
+        title: '성함을 확인해주세요.',
+        showConfirmButton: false,
+        timer: 1000,
+      });
     } else if (!user.nickname) {
-      alert('닉네임을 확인해주세요.');
+      Swal.fire({
+        icon: 'error',
+        title: '닉네임을 확인해주세요.',
+        showConfirmButton: false,
+        timer: 1000,
+      });
     } else {
       setSpinner(true);
       await signUp(user);
@@ -98,7 +119,7 @@ const SignUp = () => {
     router.push('/');
   };
   return (
-    <>
+    <div>
       <div className={styles.route}>회원가입</div>
       <div className={styles.container}>
         {/* 회원가입 작성양식 */}
@@ -200,7 +221,7 @@ const SignUp = () => {
         </div>
       </div>
       {spinner && <Spinner />}
-    </>
+    </div>
   );
 };
 

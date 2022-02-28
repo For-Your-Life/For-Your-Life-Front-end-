@@ -4,12 +4,12 @@ import styles from './index.module.scss';
 import userModify from '../../service/userModify';
 import { parseCookies, destroyCookie } from 'nookies';
 import { useRouter } from 'next/router';
-import { FaUserEdit, FaCheckCircle } from 'react-icons/fa';
+import { FaUserEdit } from 'react-icons/fa';
 import Button from '../../components/button/button';
 import Interest from '../../components/myPageComponents/interest/interest';
-import Qna from '../../components/myPageComponents/qna/qna';
 import axios from 'axios';
 import Spinner from '../../components/spinner/spinner';
+import Swal from 'sweetalert2';
 const Index = () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
@@ -17,6 +17,7 @@ const Index = () => {
   const { user, isLoading, mutate } = useUser();
   // state
   const [edit, setEdit] = useState('수정하기');
+  const [isMounted, setIsMounted] = useState(true);
   // const [accessToken, setAccessToken] = useState(parseCookies().TOKEN);
   // 수정요청
   const modify = () => {
@@ -34,6 +35,7 @@ const Index = () => {
     if (!parseCookies().TOKEN) {
       router.push('./');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parseCookies().TOKEN]);
   // SWR로 가져오는 데이터는 전부 반응성을 가지고 있다.
   // isLoading이 바뀌면 isLoading을 사용하는 부분들이 다시 실행된다. user도 마찬가지.
@@ -49,6 +51,13 @@ const Index = () => {
       nameRef.current.disabled = true;
       nicknameRef.current.disabled = true;
       modify();
+      Swal.fire({
+        icon: 'success',
+        title: '완료되었습니다.',
+        showConfirmButton: false,
+        timer: 1200,
+        iconColor: '#70d0dd',
+      });
     }
     // 수정
     else {
@@ -57,32 +66,44 @@ const Index = () => {
       nicknameRef.current.disabled = false;
     }
   };
-  const deleteUser = async () => {
-    const check = confirm(
-      '회원님의 정보와 모든 관심매물에 대한 데이터가 삭제됩니다.  \n정말 탈퇴하시겠습니까? ',
-    );
-    if (check) {
-      console.log(parseCookies().id);
-      await axios.delete(`${API_URL}/users/${parseCookies().id}`);
-      destroyCookie(null, 'TOKEN');
-      destroyCookie(null, 'id');
-      destroyCookie(null, 'nickname');
-      alert('회원탈퇴가 완료되었습니다.');
-      router.push('/');
-    }
+
+  const deleteUser = () => {
+    Swal.fire({
+      title: '회원을 탈퇴하시겠습니까?',
+      text: '개인정보와 관심 매물 등 모든 데이터가 사라집니다.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#70d0dd',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '확인',
+      cancelButtonText: '취소',
+    }).then(async result => {
+      if (result.isConfirmed) {
+        await axios.delete(`${API_URL}/users/${parseCookies().id}`);
+        destroyCookie(null, 'TOKEN');
+        destroyCookie(null, 'id');
+        destroyCookie(null, 'nickname');
+        Swal.fire('완료', '탈퇴가 성공적으로 완료되었습니다.', 'success');
+        router.push('/');
+      }
+    });
   };
+  useEffect(() => {
+    setIsMounted(false);
+  }, []);
   return (
     <>
       <div className={styles.container}>
+        {isMounted && <Spinner />}
         {isLoading ? (
-          <Spinner />
+          <div>로딩중</div>
         ) : (
           <>
             <div className={styles.route}>My Page</div>
             <div className={styles.userInfo}>
               <div className={styles.userWrap}>
                 <div className={styles.title}>
-                  <span>
+                  <span className={styles.userIcon}>
                     <FaUserEdit />
                   </span>
                   회원정보
@@ -125,6 +146,7 @@ const Index = () => {
                     disabled
                   />
                 </div>
+
                 <div className={styles.btns}>
                   <Button
                     text={`${edit}`}
@@ -145,8 +167,8 @@ const Index = () => {
                     onClick={() => deleteUser(nameRef, nicknameRef)}
                   />
                 </div>
+                <Interest />
               </div>
-              <Interest />
             </div>
           </>
         )}

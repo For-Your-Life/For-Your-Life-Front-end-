@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import { FaUserCircle } from 'react-icons/fa';
@@ -8,44 +8,84 @@ import usePost from '../../../swr/usePost';
 import Spinner from '../../../components/spinner/spinner';
 import Button from '../../../components/button/button';
 import TextEditor from '../../../components/textEditor/textEditor';
+import Swal from 'sweetalert2';
 const Id = ({ id }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const [editorMode, setEditorMode] = useState(false);
   const { data, isLoading, mutate } = usePost(id);
+  const [isMounted, setIsMounted] = useState(true);
+
   // 수정
   const update = async content => {
-    const check = confirm('발행하시겠습니까?');
-    if (!check) {
-      return;
-    }
-    await axios({
-      method: 'put',
-      url: `${API_URL}/inquiry/${id}`,
-      data: { ...data, content: content },
+    Swal.fire({
+      title: '발행',
+      text: '공지사항을 발행하시겠습니까?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#70d0dd',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '확인',
+      cancelButtonText: '취소',
+    }).then(async result => {
+      if (result.isConfirmed) {
+        // try catch 문으로 요청이 실패할 때 error를 fire하는 걸 추가해야 하는데 그냥 생략하도록 하자
+        await axios({
+          method: 'put',
+          url: `${API_URL}/inquiry/${id}`,
+          data: { ...data, content: content },
+        });
+        await mutate();
+        setEditorMode(false);
+      }
+      Swal.fire({
+        icon: 'success',
+        title: '완료되었습니다.',
+        showConfirmButton: false,
+        timer: 1200,
+        iconColor: '#70d0dd',
+      });
+      router.push('/inquiry');
     });
-    await mutate();
-    setEditorMode(false);
-    router.push('/inquiry');
   };
   // 삭제
   const deletePost = async () => {
-    const deleteCheck = confirm('공지사항을 삭제하시겠습니까?');
-    if (!deleteCheck) {
-      return;
-    }
-    await axios({
-      method: 'delete',
-      url: `${API_URL}/inquiry/${id}`,
+    Swal.fire({
+      title: '삭제',
+      text: '공지사항을 삭제하시겠습니까?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#70d0dd',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '확인',
+      cancelButtonText: '취소',
+    }).then(async result => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: 'success',
+          title: '완료되었습니다.',
+          showConfirmButton: false,
+          timer: 1200,
+          iconColor: '#70d0dd',
+        });
+        await axios({
+          method: 'delete',
+          url: `${API_URL}/inquiry/${id}`,
+        });
+        await mutate();
+        router.push('/inquiry');
+      }
     });
-    await mutate();
-    router.push('/inquiry');
   };
+  useEffect(() => {
+    setIsMounted(false);
+  }, []);
   // DOM
   return (
     <div className={styles.container}>
+      {isMounted && <Spinner />}
       {isLoading ? (
-        <Spinner />
+        <div>로딩중</div>
       ) : (
         <div>
           <div className={styles.wrap}>

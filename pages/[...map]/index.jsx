@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './index.module.scss';
 import MapNav from '../../components/mapComponents/mapNav/mapNav';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 const Index = ({ fallback: { data, first, second } }) => {
-  const router = useRouter();
   console.log(first, second);
   // 처음 이용자가 검색한 매물의 좌표를 넣어줄 것임 (production)
   const [markerPosition, setMarkerPosition] = useState({
@@ -46,6 +44,7 @@ const Index = ({ fallback: { data, first, second } }) => {
     }
     for (var i = 0; i < positions.length; i++) {
       // 마커,오버레이를 생성합니다
+      // eslint-disable-next-line no-unused-vars
       var overlay = new kakao.maps.CustomOverlay({
         map: map, // 오버레이를 표시할 지도
         position: positions[i].latlng, // 오버레이의 위치
