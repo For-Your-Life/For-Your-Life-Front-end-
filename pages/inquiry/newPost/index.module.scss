@@ -5,7 +5,9 @@
   overflow-y: hidden;
 
   .wrap {
-    width: 80rem;
+    width: 80%;
+    min-width: 850px;
+    max-width: 80rem;
     height: 100%;
     padding-top: 12rem;
     left: 0;

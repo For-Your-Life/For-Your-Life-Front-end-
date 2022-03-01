@@ -9,17 +9,20 @@ const Swip = () => {
   const window = useWindowDimensions();
   const [slidesToshow, setSlidesToShow] = useState(4);
   useEffect(() => {
-    if (window.width >= 1200) {
-      setSlidesToShow(4);
+    if (window.width >= 1400) {
+      setSlidesToShow(6);
+    }
+    if (window.width < 1400) {
+      setSlidesToShow(5);
     }
     if (window.width < 1200) {
-      setSlidesToShow(3);
+      setSlidesToShow(4);
     }
     if (window.width < 1000) {
-      setSlidesToShow(2);
+      setSlidesToShow(3);
     }
     if (window.width < 800) {
-      setSlidesToShow(1);
+      setSlidesToShow(2);
     }
   }, [window.width]);
   // 슬라이드 세팅
@@ -42,28 +45,28 @@ const Swip = () => {
         {/* 나중에 부동산 정보를 받아와서 loop로 돌려야 함. */}
         <Slider {...settings}>
           <div className={styles.test}>
-            <div className={styles.article}></div>
+            <div className={styles.article}>1</div>
           </div>
           <div className={styles.test}>
-            <div className={styles.article}></div>
+            <div className={styles.article}>2</div>
           </div>
           <div className={styles.test}>
-            <div className={styles.article}></div>
+            <div className={styles.article}>3</div>
           </div>
           <div className={styles.test}>
-            <div className={styles.article}></div>
+            <div className={styles.article}>4</div>
           </div>
           <div className={styles.test}>
-            <div className={styles.article}></div>
+            <div className={styles.article}>5</div>
           </div>
           <div className={styles.test}>
-            <div className={styles.article}></div>
+            <div className={styles.article}>6</div>
           </div>
           <div className={styles.test}>
-            <div className={styles.article}></div>
+            <div className={styles.article}>7</div>
           </div>
           <div className={styles.test}>
-            <div className={styles.article}></div>
+            <div className={styles.article}>8</div>
           </div>
         </Slider>
       </div>

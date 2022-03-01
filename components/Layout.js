@@ -2,38 +2,69 @@ import NavBar from './navBar/navBar.jsx';
 import Footer from './footer/footer';
 import { useRouter } from 'next/router';
 import useScrollPosition from '@react-hook/window-scroll';
+import MapContext from '../pages/mapContext.js';
 import Up from './up/up.jsx';
+import { useState } from 'react';
 export default function Layout({ children }) {
   const router = useRouter();
   const scrollY = useScrollPosition(4);
+  // map type에 대한 global state
+  const [chkTerrain, setChkTerrain] = useState(false);
+  const [chkTraffic, setChkTraffic] = useState(false);
+  const [chkBicycle, setChkBicycle] = useState(false);
+  const [chkUseDistrict, setChkUseDistrict] = useState(false);
   // 페이지의 주소에 login이 포함되어 있으면 navBar와 footer를 렌더하지 않는다.
   if (router.asPath.includes('/login') || router.asPath.includes('/map')) {
     return (
       <>
-        <div>{children}</div>
+        <MapContext.Provider
+          value={{
+            state: {
+              chkTerrain,
+              chkTraffic,
+              chkBicycle,
+              chkUseDistrict,
+            },
+            set: {
+              setChkTerrain,
+              setChkTraffic,
+              setChkBicycle,
+              setChkUseDistrict,
+            },
+          }}
+        >
+          <div>{children}</div>
+        </MapContext.Provider>
         <style global jsx>
           {`
-            @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Brush+Script&display=swap');
-            body {
-              font-family: 'Do Hyeon', sans-serif;
-              color: #555;
-            }
-            input {
-              font-family: 'Do Hyeon', sans-serif;
-            }
             .kakaoInfoWindowContainer {
+              position: absolute;
+              padding: 0;
               z-index: 1;
-              width: 12rem;
-              height: 5rem;
+              width: 20rem;
+              height: 10rem;
               display: block;
               background-color: white;
               outline: none;
-              border-bottom: 1px solid #999;
-              border-right: 1px solid #999;
               display: flex;
               justify-content: center;
-              padding: 5px;
               color: rgb(160, 160, 160);
+              border-radius: 10px;
+              transform: translateY(-8rem) translateX(-5rem);
+              box-shadow: 4px 4px 8px 0px rgb(136, 136, 136);
+              .kakaoInfoWindowHeader {
+                width: 100%;
+                height: 30%;
+                background-color: #70d0dd;
+                padding: 1rem;
+                color: white;
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+              }
             }
             .kakaoCustomOverlay {
               width: 4rem;
@@ -82,17 +113,7 @@ export default function Layout({ children }) {
       <Footer />
       {scrollY > 400 && <Up />}
       <style global jsx>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-          body {
-            font-family: 'Noto Sans KR', sans-serif;
-            padding-right: 0 !important;
-            color: #555;
-          }
-          input {
-            font-family: 'Noto Sans KR', sans-serif;
-          }
-        `}
+        {``}
       </style>
     </>
   );

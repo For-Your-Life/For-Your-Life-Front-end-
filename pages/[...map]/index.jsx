@@ -1,17 +1,26 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import styles from './index.module.scss';
 import MapNav from '../../components/mapComponents/mapNav/mapNav';
 import axios from 'axios';
+import MapContext from '../mapContext';
 const Index = ({ fallback: { data, first, second } }) => {
-  console.log(first, second);
   // 처음 이용자가 검색한 매물의 좌표를 넣어줄 것임 (production)
   const [markerPosition, setMarkerPosition] = useState({
     La: second,
     Ma: first,
   });
+  const [isMounted, setIsMounted] = useState(false);
+  const [kakao, setKakao] = useState();
+  const [mapp, setMapp] = useState();
+  // 지도 타입 설정을 위한 context state
+  const value = useContext(MapContext);
+  let { chkTerrain, chkTraffic, chkBicycle, chkUseDistrict } = value.state;
   const mapRef = useRef();
   useEffect(() => {
     const { kakao } = window;
+    // map type 추가를 위해 state에 kakao 객체를 저장했다.
+    // 참조형 데이터 이므로 아래의 useEffect 로직 안에서 kakao를 사용했다.
+    setKakao(kakao);
     let container = mapRef.current;
     let options = {
       center: new kakao.maps.LatLng(first, second),
@@ -19,6 +28,9 @@ const Index = ({ fallback: { data, first, second } }) => {
     };
 
     let map = new kakao.maps.Map(container, options);
+    // map type 추가를 위해 state에 map 객체를 저장했다.
+    // 참조형 데이터 이므로 아래의 useEffect 로직 안에서 map을 사용했다.
+    setMapp(map);
     map.setZoomable(true);
     // 지도에 표시할 content와 latlng를 형식에 맞게 등록하기 위해
     // 응답된 데이터를 새 배열에 push
@@ -38,7 +50,7 @@ const Index = ({ fallback: { data, first, second } }) => {
     for (let i = 0; i < data.length; i++) {
       positions.push({
         overlayContent: `<div class="kakaoCustomOverlay">${data[i].price}</div>`,
-        infoWindowContent: `<div class="kakaoInfoWindowContainer">${data[i].address}</div>`,
+        infoWindowContent: `<div class="kakaoInfoWindowContainer"><div class='kakaoInfoWindowHeader'>${data[i].address}</div></div>`,
         latlng: new kakao.maps.LatLng(data[i].latlng.ma, data[i].latlng.la),
       });
     }
@@ -81,6 +93,7 @@ const Index = ({ fallback: { data, first, second } }) => {
         makeClickListener(positions[i].latlng),
       );
     }
+    setIsMounted(true);
   }, []);
   // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
   // position에는 마커의 좌표정보가 들어있다.
@@ -94,13 +107,48 @@ const Index = ({ fallback: { data, first, second } }) => {
       infowindow.open(map, marker);
     };
   }
-
   // 인포윈도우를 닫는 클로저를 만드는 함수입니다
   function makeOutListener(infowindow) {
     return function () {
       infowindow.close();
     };
   }
+  // 사용자가 map type 버튼을 클릭해서 bool이 바뀔 때 마다 실행되는 로직.
+  // 타입에 대한 bool 값은 context 변수로 mapContent 컴포넌트에서 변화된다.
+  useEffect(() => {
+    if (isMounted) {
+      var mapTypes = {
+        terrain: kakao.maps.MapTypeId.TERRAIN,
+        traffic: kakao.maps.MapTypeId.TRAFFIC,
+        bicycle: kakao.maps.MapTypeId.BICYCLE,
+        useDistrict: kakao.maps.MapTypeId.USE_DISTRICT,
+      };
+      // 지도 타입을 제거합니다
+      for (var type in mapTypes) {
+        mapp.removeOverlayMapTypeId(mapTypes[type]);
+      }
+
+      // 지적편집도정보 체크박스가 체크되어있으면 지도에 지적편집도정보 지도타입을 추가합니다
+      if (chkUseDistrict) {
+        mapp.addOverlayMapTypeId(mapTypes.useDistrict);
+      }
+
+      // 지형정보 체크박스가 체크되어있으면 지도에 지형정보 지도타입을 추가합니다
+      if (chkTerrain) {
+        mapp.addOverlayMapTypeId(mapTypes.terrain);
+      }
+
+      // 교통정보 체크박스가 체크되어있으면 지도에 교통정보 지도타입을 추가합니다
+      if (chkTraffic) {
+        mapp.addOverlayMapTypeId(mapTypes.traffic);
+      }
+
+      // 자전거도로정보 체크박스가 체크되어있으면 지도에 자전거도로정보 지도타입을 추가합니다
+      if (chkBicycle) {
+        mapp.addOverlayMapTypeId(mapTypes.bicycle);
+      }
+    }
+  }, [chkTerrain, chkTraffic, chkBicycle, chkUseDistrict, isMounted]);
   return (
     <>
       <div className={styles.map} ref={mapRef}>
@@ -113,7 +161,6 @@ export default Index;
 
 export async function getServerSideProps(ctx) {
   const { data } = await axios.get('http://localhost:4000/address');
-  console.log('wdwdwdw', ctx.query.la);
   const first = ctx.query.ma ? ctx.query.ma : 33.450705;
   const second = ctx.query.la ? ctx.query.la : 126.570677;
   return {

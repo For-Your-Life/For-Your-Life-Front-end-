@@ -5,7 +5,9 @@
   min-height: 100vh;
   color: $basicText;
   .wrap {
-    width: 80rem;
+    width: 80%;
+    max-width: 80rem;
+    min-width: 850px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -46,17 +48,27 @@
       .article {
         margin: 2rem;
       }
+      .date {
+        margin: 2rem;
+        width: 6rem;
+      }
       .postTitle {
         width: 40rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        @media screen and (max-width: 1000px) {
+          width: 30rem;
+        }
       }
     }
     .right {
       .writer {
         width: 8rem;
         margin: 2rem 4rem 2rem 2rem;
+      }
+      @media screen and (max-width: 1300px) {
+        display: none;
       }
     }
   }

@@ -3,7 +3,6 @@ import styles from './navBar.module.scss';
 // hooks
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import useWindowDimensions from '../../swr/useGetWindow';
 // icon
 import { FaRegArrowAltCircleRight, FaUserEdit } from 'react-icons/fa';
 // nookie
@@ -13,7 +12,6 @@ export default function NavBar() {
   // token 체크해서 로그인/로그아웃 조건부 렌더링
   const [checkToken, setCheckToken] = useState(parseCookies().TOKEN);
   // width가 1200이하일 경우 로고 삭제
-  const windowDimension = useWindowDimensions();
   // router
   const router = useRouter();
   useEffect(() => {
@@ -65,12 +63,15 @@ export default function NavBar() {
         </div>
         {/* 서브메뉴 끝 */}
         {/* 로고 */}
-        {windowDimension.width > 1200 && (
-          <div className={styles.logo}>
-            <div className={styles.logoImg}></div>
-            <div className={styles.logoText}>For Your Life</div>
+        <div className={styles.logo}>
+          <div
+            className={styles.logoImg}
+            onClick={() => router.push('/')}
+          ></div>
+          <div className={styles.logoText} onClick={() => router.push('/')}>
+            For Your Life
           </div>
-        )}
+        </div>
         {/* 로고끝 */}
         {/* 메인 메뉴 */}
         <div className={styles.navLink}>

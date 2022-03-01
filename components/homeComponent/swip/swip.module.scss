@@ -16,7 +16,7 @@
   height: 20rem;
   .article {
     position: absolute;
-    width: 20rem;
+    width: 15rem;
     height: 100%;
     background-color: royalblue;
     left: 0;
@@ -24,5 +24,10 @@
     margin: auto;
     border: 2px solid #333;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 36px;
   }
 }

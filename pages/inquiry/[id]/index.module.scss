@@ -2,9 +2,12 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  overflow-y: hidden;
+  overflow: hidden;
+  padding: 1rem;
   .wrap {
-    width: 80rem;
+    width: 80%;
+    min-width: 850px;
+    max-width: 80rem;
     height: 100%;
     padding-top: 12rem;
     left: 0;

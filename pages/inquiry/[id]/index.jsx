@@ -37,15 +37,15 @@ const Id = ({ id }) => {
         });
         await mutate();
         setEditorMode(false);
+        Swal.fire({
+          icon: 'success',
+          title: '완료되었습니다.',
+          showConfirmButton: false,
+          timer: 1200,
+          iconColor: '#70d0dd',
+        });
+        router.push('/inquiry');
       }
-      Swal.fire({
-        icon: 'success',
-        title: '완료되었습니다.',
-        showConfirmButton: false,
-        timer: 1200,
-        iconColor: '#70d0dd',
-      });
-      router.push('/inquiry');
     });
   };
   // 삭제

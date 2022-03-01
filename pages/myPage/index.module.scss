@@ -18,7 +18,9 @@
     background-color: $basicTheme;
   }
   .userInfo {
-    width: 80rem;
+    width: 80%;
+    min-width: 850px;
+    max-width: 80rem;
     height: auto;
     display: flex;
     top: 0;
@@ -26,6 +28,7 @@
     left: 0;
     right: 0;
     margin: 12rem auto;
+    padding: 1rem;
     .userWrap {
       width: 100%;
     }

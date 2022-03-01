@@ -3,6 +3,8 @@
    License: none (public domain)
 */
 @import './color.scss';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
 html,
 body,
 div,
@@ -131,15 +133,15 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Do Hyeon', sans-serif -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
+  color: #555;
   overflow-x: hidden;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding-right: 0 !important;
+  color: #555;
 }
 input {
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
-
 a {
   color: inherit;
   text-decoration: none;
