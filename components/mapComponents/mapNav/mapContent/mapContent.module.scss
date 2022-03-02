@@ -18,6 +18,10 @@
       border-bottom: 4px solid transparent;
       transition: 0.2s;
       cursor: pointer;
+      &:hover {
+        border-bottom: 4px solid $basicTheme;
+        color: $darkenTheme;
+      }
     }
     .active {
       border-bottom: 4px solid $basicTheme;

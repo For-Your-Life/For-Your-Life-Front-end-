@@ -51,7 +51,8 @@ const Roadview = ({ markerPosition }) => {
             background-color: #999;
             bottom: 0;
             margin: auto;
-            color: #333;
+            color: white;
+            font-weight: bold;
             display: flex;
             justify-content: center;
             align-items: center;
