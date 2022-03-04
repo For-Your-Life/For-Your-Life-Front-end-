@@ -28,6 +28,9 @@ const Index = () => {
       setData(test);
     })();
   }, []);
+  useEffect(() => {
+    console.log('쿠키 값', parseCookies());
+  }, []);
   return (
     <>
       <div className={styles.container}>

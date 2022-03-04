@@ -6,7 +6,7 @@ export default async function userModify(user) {
   const headers = { Authorization: `Bearer ${accessToken.TOKEN}` };
   try {
     await axios({
-      method: 'put', //you can set what request you want to be
+      method: 'put',
       url: 'http://localhost:4000/users/1',
       data: user,
       headers,
