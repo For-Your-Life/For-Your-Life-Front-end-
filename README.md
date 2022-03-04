@@ -33,7 +33,6 @@ Admin 페이지로 유저정보를 쉽게 관리하고 공지사항을 게시할
 - 텍스트에디터로 draft.js를 사용했습니다.
 - 반응형 뷰를 제작했습니다.
 - Cookie와 session으로 JWT를 저장하고 Refresh Token을 재발급받아 로그인 세션을 구현하였습니다.
-- 
 
 ## 💡 Specs
 
