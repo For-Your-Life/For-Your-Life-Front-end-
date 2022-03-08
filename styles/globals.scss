@@ -183,12 +183,13 @@ input[type='number']::-webkit-outer-spin-button {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $darkenTheme;
+  background: #999;
+  border-radius: 20px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $darkenTheme;
+  background: #999;
 }
 
 .editor {

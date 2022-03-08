@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { FaRegArrowAltCircleRight, FaUserEdit } from 'react-icons/fa';
 // nookie
 import { parseCookies, destroyCookie } from 'nookies';
-
+import Hamburger from 'hamburger-react';
 export default function NavBar() {
   // token 체크해서 로그인/로그아웃 조건부 렌더링
   const [checkToken, setCheckToken] = useState(parseCookies().TOKEN);
@@ -18,6 +18,7 @@ export default function NavBar() {
     setCheckToken(parseCookies().TOKEN);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parseCookies().TOKEN]);
+  const [isOpen, setOpen] = useState(false);
   return (
     <>
       <nav className={styles.nav}>
@@ -60,6 +61,10 @@ export default function NavBar() {
               </Link>
             </div>
           )}
+
+          <div className={styles.hamburger}>
+            <Hamburger toggled={isOpen} toggle={setOpen} />
+          </div>
         </div>
         {/* 서브메뉴 끝 */}
         {/* 로고 */}

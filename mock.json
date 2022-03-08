@@ -146,7 +146,17 @@
     {
       "title": "첫번째 질문",
       "question": "질문 내용",
-      "writerId": "cottonwood@naver.com"
+      "writerId": "cottonwood@naver.com",
+      "comment": [
+        {
+          "nickname": "cottonwood",
+          "content": "댓글입니다."
+        },
+        {
+          "nickname": "earlyBird",
+          "content": "댓글입니다."
+        }
+      ]
     }
   ],
   "inquiry": [
